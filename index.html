@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Analytics 4 - Search</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    code {
+      border: 1px solid var(--bs-warning);
+      color: var(--bs-dark);
+      background-color: var(--bs-warning-bg-subtle);
+      padding: 3px 5px;
+      border-radius: 6px;
+    }
+  </style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','_____GTM_CODE_HERE______');</script>
+  <!-- End Google Tag Manager -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=_____GTM_CODE_HERE______"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <main class="container">
+    <h1>GA4 Search</h1>
+    <form id="search-form" class="mb-4">
+      <div class="mb-4">
+        <label for="search">Search keyword</label>
+        <input type="search" class="form-control" name="search" id="search" value="" placeholder="potato" autofocus required>
+      </div>
+
+      <div class="mb-4">
+        <label for="region">Region</label>
+        <input type="text" class="form-control" name="region" id="region" value="" placeholder="Barcelona">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <p>Submitting the form adds the GA4 built-in event <code>search</code> into the <code>dataLayer</code> array.</p>
+    <p>The <code>search</code> requires a built-in parameter called <code>search_term</code> (<a href="https://developers.google.com/analytics/devguides/collection/ga4/reference/events?sjid=14128743213290794569-EU&client_type=gtm#search" target="_blank" rel="noopener noreferrer">More information</a>).</p>
+    <p>On GTM, we need 2 <code>Data Layer Variable</code> variables: <code>search_term</code> and <code>region</code>.</p>
+    <p>In theory, the <code>region</code> parameter is conflicting with GA's built-in dimension with the same name. Nothing happens. Make sure you go to GA > Admin > Custom definitions > Create custom definition</p>
+    <ul>
+      <li><b>Dimension name</b>: Any custom name you want. In this case, we use <code>Region</code> but you can use something like <code>School</code></li>
+      <li><b>Scope</b>: Event</li>
+      <li><b>Description</b>: optional but fill out for future reference</li>
+      <li><b>Event parameter</b>: Attached to what event. For example, in this case here, we are dealing with the <code>search</code> event so we select <code>search</code></li>
+    </ul>
+  </main>
+</body>
+</html>
